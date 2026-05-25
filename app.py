@@ -20,7 +20,7 @@ class User(db.Model):
 def index():
     return redirect('/login')
 
-@app.route('/dstaikhoan')
+@app.route('/dstaikhoan', methods=['GET', 'POST'])
 def dstaikhoan():
     users = User.query.all()
     return render_template('dstaikhoan.html', users=users)
