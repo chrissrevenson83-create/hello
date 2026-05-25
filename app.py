@@ -20,6 +20,11 @@ class User(db.Model):
 def index():
     return redirect('/login')
 
+@app.route('/dashboard')
+def dashboard():
+    users = User.query.all()
+    return render_template('dstaikhoan.html', users=users)
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -60,19 +65,6 @@ def logout():
     return redirect('/login')
 
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-db = SQLAlchemy(app)
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True)
-    password = db.Column(db.String(120))
-
-@app.route('/dashboard')
-def dashboard():
-    users = User.query.all()
-    return render_template('dstaikhoan.html', users=users)
 
 if __name__ == '__main__':
     with app.app_context():
