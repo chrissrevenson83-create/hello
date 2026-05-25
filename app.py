@@ -2,12 +2,10 @@ from flask import Flask, request, redirect, render_template, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 
-# 1. Tạo app trước
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SECRET_KEY'] = 'your-secret-key-123'
 
-# 2. Sau đó mới khởi tạo db và bcrypt
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
