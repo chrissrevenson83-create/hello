@@ -20,8 +20,8 @@ class User(db.Model):
 def index():
     return redirect('/login')
 
-@app.route('/dashboard')
-def dashboard():
+@app.route('/dstaikhoan')
+def dstaikhoan():
     users = User.query.all()
     return render_template('dstaikhoan.html', users=users)
 
