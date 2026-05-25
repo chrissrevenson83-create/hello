@@ -14,6 +14,9 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True)
     password = db.Column(db.String(120))
 
+@app.route('/')
+def index():
+    return redirect('/login')
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
