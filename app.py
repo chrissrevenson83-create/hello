@@ -8,6 +8,8 @@ app.config['SECRET_KEY'] = 'your-secret-key-123'
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+with app.app_context():
+    db.create_all()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -17,6 +19,7 @@ class User(db.Model):
 @app.route('/')
 def index():
     return redirect('/login')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -55,6 +58,21 @@ def dashboard():
 def logout():
     session.clear()
     return redirect('/login')
+
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True)
+    password = db.Column(db.String(120))
+
+@app.route('/dashboard')
+def dashboard():
+    users = User.query.all()
+    return render_template('dstaikhoan.html', users=users)
 
 if __name__ == '__main__':
     with app.app_context():
