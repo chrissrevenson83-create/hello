@@ -6,6 +6,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://sa:123@DESKTOP-SUWOFVS/d
 db = SQLAlchemy(app)
 
 class User(db.Model):
+    __tablename__ = 'danhsachABS'  # tên bảng trong SQL Server
     id = db.Column(db.Integer, primary_key=True)
     stt = db.Column(db.Integer)
     ma_nv = db.Column(db.String(80))
