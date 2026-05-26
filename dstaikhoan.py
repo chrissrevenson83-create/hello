@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://sa:123@localhost/danhsachABS?driver=SQL+Server'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://sa:123@DESKTOP-SUWOFVS/danhsachABS?driver=SQL+Server'
 db = SQLAlchemy(app)
 
 class User(db.Model):
