@@ -22,9 +22,8 @@ def index():
 
 @app.route('/dstaikhoan')
 def dstaikhoan():
-    if 'user_id' not in session:
-        return redirect('/login')
-    return render_template('dstaikhoan.html', username=session['username'])
+    users = User.query.all()
+    return render_template('dstaikhoan.html', users=users)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
