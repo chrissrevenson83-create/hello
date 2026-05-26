@@ -22,8 +22,9 @@ def index():
 
 @app.route('/dstaikhoan')
 def dstaikhoan():
-    users = User.query.all()
-    return render_template('dstaikhoan.html', users=users)
+    if 'user_id' not in session:
+        return redirect('/login')
+    return render_template('dstaikhoan.html', username=session['username'])
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -63,8 +64,6 @@ def dashboard():
 def logout():
     session.clear()
     return redirect('/login')
-
-
 
 if __name__ == '__main__':
     with app.app_context():
