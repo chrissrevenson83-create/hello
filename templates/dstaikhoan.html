@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Danh sách các tà<input type="button" value=""> khoản</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f8f8f8;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+    </style>
+</head>
+<body>
+    <h2>Danh sách tài khoản</h2>
+    <table>
+        <tr>
+            <th>STT</th>
+            <th>Mã nhân viên</th>
+            <th>Họ và tên</th>
+            <th>Email</th>
+            <th>Chức danh</th>
+            <th>Đơn vị 1</th>
+            <th>Đơn vị 2</th>
+            <th>Số điện thoại</th>
+            <th>Người quản lý</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.stt }}</td>
+            <td>{{ user.ma_nv }}</td>
+            <td>{{ user.hoten }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.chucdanh }}</td>
+            <td>{{ user.donvi1 }}</td>
+            <td>{{ user.donvi2 }}</td>
+            <td>{{ user.sodienthoai }}</td>
+            <td>{{ user.nguoiquanly }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
